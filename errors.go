@@ -1,12 +1,11 @@
-package gomysqllock
+package dmutex
 
 import "errors"
 
-// ErrGetLockContextCancelled is returned when user given context is cancelled while trying to obtain the lock
-var ErrGetLockContextCancelled = errors.New("context cancelled while trying to obtain lock")
+var (
+	// ErrGetLockContextCancelled is returned when user given context is cancelled while trying to obtain the lock
+	ErrGetLockContextCancelled = errors.New("context cancelled while trying to obtain lock")
 
-// ErrMySQLTimeout is returned when the MySQL server can't acquire the lock in the specified timeout
-var ErrMySQLTimeout = errors.New("(mysql) timeout while acquiring the lock")
-
-// ErrMySQLInternalError is returned when MySQL is returning a generic internal error
-var ErrMySQLInternalError = errors.New("internal mysql error acquiring the lock")
+	// ErrLockReleased is returned when any problem happens releasing the lock.
+	ErrLockReleased = errors.New("release error")
+)
